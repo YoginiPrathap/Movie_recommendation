@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommendations for {{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Top Recommendations for "{{ title }}"</h2>
+        {% if recs %}
+            <ul>
+                {% for movie, score in recs %}
+                    <li>{{ movie }} (Similarity: {{ "%.3f"|format(score) }})</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No similar movies found.</p>
+        {% endif %}
+        <a href="/">🔙 Back</a>
+    </div>
+</body>
+</html>
